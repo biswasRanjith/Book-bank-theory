@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book Bank | Book Description</title>
+    <link rel="icon" href="images/logob.png">
+    <!-- Bootstrap cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- Hover.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <!-- External css -->
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <!-- ajaxcall -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("getuser");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="/home">
+            <img class="logo" src="/images/logob.PNG" alt="THIS Book">
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-maroon" href="/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-maroon" href="/sellbook">Sell Book</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-maroon" href="/contact">Contact Us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-maroon" href="/about">About Us</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/search" method="GET">
+                <input class="form-control mr-sm-2 search-bar-border" type="search" id="search" name="search" placeholder="Search" aria-label="Search">
+
+                <button class="btn btn-maroon"><i class="fa fa-search search-icon-white"></i></button>
+            </form>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-maroon dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <!-- <a class="dropdown-item" href="/order">Order</a> -->
+                        <a class="dropdown-item" href="/yourbook">Your Book</a>
+                        <a class="dropdown-item" href="/wishlist">Wishlist</a>
+                        <a class="dropdown-item" href="/signout">Signout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-40">
+        <div class="row">
+
+            <div class="col-md-4 col-sm-12">
+                <img data-image="third" class="active" src="" alt=" third_img" width="100%">
+            </div>
+            <div class="col-md-6 offset-md-2 col-sm-12">
+                <h1><b><h8>Book Details<h8><b> </h1>
+                <h2> </h2>
+                
+                <label for="id">book Id</label>
+                <input type="number" id="BookId" value="<%=data.BookId%>" readonly>
+                
+                
+                <p> Book Name :  <label><%=data.BookName%> </label></p>
+                <p> Book Author : <label><%=data.BookAuthor%> </label> </p>
+                <p> Book Description : <label><%=data.BookDescription%></label></p>
+                <p> MRP : <label><%=data.BookMrp%> </label></p>
+                <p> Price : <label><%=data.BookPrice%> </label></p>
+                <button class="btn btn-success" id="myBtn" style="width: 100px">Buy</button> 
+              
+                <script>
+                    console.log("started");
+                    document.getElementById("myBtn").onclick = function(event) {
+
+                        console.log("ookkkk");
+
+                        var temp = {
+                            "BookId": document.getElementById("BookId").value,
+                            
+                        }
+                        console.log(temp);
+
+                        var result = null;
+                        // console.log(temp);
+                        $.ajax({
+                            "crossDomain": true,
+                            "url": "http://localhost:3000/api/showUserDetails",
+                            "method": "GET",
+                            "timeout": 200,
+                            "data": JSON.stringify(temp),
+                            "async": false,
+                            "headers": {
+                                "content-type": "application/json"
+                            },
+                            success: function(data) {
+
+                                console.log("data status" + data.status);
+
+                                if (data.status == 200) {
+
+                                    window.location = "http://localhost:3000/product"
+                                    result = data;
+                                } else {
+                                    alert('Wrong');
+                                }
+                            },
+                            fail: function(data) {
+                                console.log(data)
+                                result = data;
+                            }
+                        });
+                        //console.log(result);
+                    };
+                </script>
+
+                
+                
+                <button id="wishlist" class="btn btn-danger ml-5" style="width: 100px">Add to wishlist</button>  
+                <script>
+                        console.log("ajax call");
+                        document.getElementById("wishlist").onclick = function(ev) {
+                            console.log("ooooook----");
+    
+                            var temp = {
+                                "BookId": document.getElementById("BookId").value,
+                              // "UserId": document.getElementById("UserId").value,
+    
+                            }
+    
+                            console.log(temp)
+    
+                            var result = null;
+                            //     console.log(temp)
+                            $.ajax({
+                                "crossDomain": true,
+                                "url": "http://localhost:3000/api/wishlist",
+                                "method": "POST",
+                                "timeout": 200,
+                                "data": JSON.stringify(temp),
+                                "async": false,
+                                "headers": {
+                                    "content-type": "application/json"
+                                },
+                                success: function(data) {
+                                    alert('1 data added');
+                                    console.log("data status" + data);
+                                    window.location = "http://localhost:3000/wishlist"
+                                    result = data;
+    
+                                },
+    
+                                fail: function(data) {
+                                    console.log(data)
+                                    result = data;
+                                }
+                            });
+    
+                            //console.log(result);
+                        };
+                    </script>
+
+
+
+                 
+
+    </div>
+   
+ <!-- The Modal -->
+ <div id="myModal" class="modal">
+                      
+        <!-- Modal content -->
+
+        <div class="modal-content">
+              
+           <span class="close" style="color: red">&times;</span>
+                      
+                     
+          <div class="modal-body">
+              <br><br> 
+            <p><center><b><h3>Are you sure want to buy this product?</h3></b></p>
+                    <h6>For further Queries please Contact seller Number:<b><%=data.Mobilenumber%></b></h6>
+                    <br><br><br>
+
+                    <button class="btn btn-success" style="width: 100px">Yes</button>
+                    <button class="btn btn-danger ml-5" style="width: 100px">No</button></center>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    </div>
+
+
+    </div>
+
+    </div>
+    </div>
+
+    <div class="footer mt-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 mt-20">
+                    <h3>About US</h3>
+                    <p class="text-maroon">THIS BOOK is a online platform for selling and buying old books. </p>
+                </div>
+                <div class="col-md-4 col-sm-12 mt-20">
+                    <h3>Quick Links</h3>
+                    <ul type="none">
+                        <li class="footerLink"><a href="">FAQ</a></li>
+                        <li class="footerLink"><a href="">About Us</a></li>
+                        <li class="footerLink"><a href="">Sell Book</a></li>
+                        <li class="footerLink"><a href="">Privacy Policy</a></li>
+                        <li class="footerLink"><a href="">Terms Of Use</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-12 mt-20">
+                    <h3>Contact Us</h3>
+                    <i class="fa fa-envelope fs-22"></i>
+                    <span class="text-maroon ml-2">this@gmail.com</span>
+                    <br>
+                    <i class="fa fa-phone fs-22"></i>
+                    <span class="text-maroon ml-2">+91-1234567890</span>
+                    <br>
+                    <i class="fa fa-map-marker fs-22"></i>
+                    <span class="text-maroon ml-2">Global Village Tech Park, Bangalore</span>
+                    <h5 class="mt-20">Social Links</h5>
+                    <a href="#" class="socialLink"><i class="fa fa-facebook-square socialFb fs-28"></i></a>
+                    <a href="#" class="socialLink"><i class="fa fa-instagram socialInsta fs-28 ml-2"></i></a>
+                    <a href="#" class="socialLink"><i class="fa fa-linkedin-square socialLinkedIn fs-28 ml-2"></i></a>
+                    <a href="#" class="socialLink"> <i class="fa fa-twitter socialTwitter fs-28 ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

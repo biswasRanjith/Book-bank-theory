@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book Bank | Wishlist</title>
+    <link rel="icon" href="/images/logob.png">
+    <!-- Bootstrap cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- Hover.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <!-- External css -->
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <!-- ajaxcall -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="/images/logob.PNG" alt="Book Bank">
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-maroon" href="/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-maroon" href="/sellbook">Sell Book</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-maroon" href="/contact">Contact Us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-maroon" href="/about">About Us</a>
+                </li>
+
+            </ul>
+            <section class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 search-bar-border" type="search" placeholder="Search" aria-label="Search">
+
+                <button class="btn btn-maroon br-50 hvr-glow"><i class="fa fa-search search-icon-white"></i></button>
+
+            </section>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-maroon dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <!-- <a class="dropdown-item" href="/order">Order</a> -->
+                        <a class="dropdown-item" href="/yourbook">Your Book</a>
+                        <a class="dropdown-item" href="/wishlist">Wishlist</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout">Signout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="cart-main-area section-padding--lg bg--white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 ">
+
+                    <div class="table-content wnro__table table-responsive">
+                        <table>
+                            <thead>
+                                <tr class="title-top">
+                                    <th class="product-name">Book ID</th>
+                                    <th class="product-name">Book Name</th>
+                                    <th class="product-name">Book Author</th>
+                                    <th class="product-name">Book Price</th>
+
+                                    <!-- <th class="product-price">Book Price</th> -->
+                                    <!-- <th class="product-price">Your Id</th> -->
+
+                                    <th class="product-remove">Remove</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(data.length) { 
+                                    for(var i=0;i<data.length;i++) {%>
+                                    <tr>
+
+
+                                        <td class="product-name">
+
+                                            <input id="BookId<%=data[i].BookId%>" value="<%=data[i].BookId%>" readonly/>
+
+                                        </td>
+                                        <td class="product-name">
+                                            <span>
+                                            <%=data[i].BookName%>
+                                        </span>
+                                        </td>
+                                        <td class="product-name">
+                                            <span>
+                                            <%=data[i].BookAuthor%>
+                                        </span>
+                                        </td>
+                                        <td class="product-name">
+                                            <span>
+                                                <%=data[i].BookPrice%>
+                                            </span>
+                                        </td>
+
+
+                                        <td class="product-remove"><a type="button" id="removewishlist<%=data[i].BookId%>">Delete</a></td>
+                                    </tr>
+
+                    <!-- AJAX CALL -->
+                    <script>
+                        console.log("ajax call");
+                        document.getElementById("removewishlist<%=data[i].BookId%>").onclick = function(ev) {
+                            console.log("ooooook----");
+
+                            var temp = {
+                                "BookId": document.getElementById("BookId<%=data[i].BookId%>").value,
+                                // "UserId": document.getElementById("UserId").value
+                            }
+
+                            console.log(temp)
+
+                            var result = null;
+                            //     console.log(temp)
+                            $.ajax({
+                                "crossDomain": true,
+                                "url": "http://localhost:3000/api/removeWishlist",
+                                "method": "DELETE",
+                                "timeout": 200,
+                                "data": JSON.stringify(temp),
+                                "async": false,
+                                "headers": {
+                                    "content-type": "application/json"
+                                },
+                                success: function(data) {
+                                    alert('Updated Successfully');
+                                    console.log("data status" + data);
+                                    window.location = "http://localhost:3000/wishlist"
+                                    result = data;
+
+                                },
+
+                                fail: function(data) {
+                                    console.log(data)
+                                    result = data;
+                                }
+                            });
+
+                            //console.log(result);
+                        };
+                    </script>
+                    <!-- AJAX CALL END -->
+
+
+                                    <%}%>
+                                        <%} else {%>
+                                            <script>
+                                                alert("No Books");
+                                            </script>
+                                            <%}%>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <div class="footer mt-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 mt-20">
+                    <h3>About US</h3>
+                    <p class="text-maroon">“BOOK BANK” an online marketing web application to connect people to people who wish to make business through the application to buy and resell books and make hustle free reselling of books. This application will be more concentrated
+                        towards user friendly experience and give user an experience of hustle free book reselling without getting in into any miss leads. </p>
+                </div>
+                <div class="col-md-4 col-sm-12 mt-20">
+                    <h3>Quick Links</h3>
+                    <ul type="none">
+                        <li class="footerLink"><a href="">FAQ</a></li>
+                        <li class="footerLink"><a href="">About Us</a></li>
+                        <li class="footerLink"><a href="">Sell Book</a></li>
+                        <li class="footerLink"><a href="">Privacy Policy</a></li>
+                        <li class="footerLink"><a href="">Terms Of Use</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-12 mt-20">
+                    <h3>Contact Us</h3>
+                    <i class="fa fa-envelope fs-22"></i>
+                    <span class="text-maroon ml-2">BookBank@bookbank.com</span>
+                    <br>
+                    <i class="fa fa-phone fs-22"></i>
+                    <span class="text-maroon ml-2">+91-1234567890</span>
+                    <br>
+                    <i class="fa fa-map-marker fs-22"></i>
+                    <span class="text-maroon ml-2">Global Village Tech Park, Bangalore</span>
+                    <h5 class="mt-20">Social Links</h5>
+                    <a href="#" class="socialLink"><i class="fa fa-facebook-square socialFb fs-28"></i></a>
+                    <a href="#" class="socialLink"><i class="fa fa-instagram socialInsta fs-28 ml-2"></i></a>
+                    <a href="#" class="socialLink"><i class="fa fa-linkedin-square socialLinkedIn fs-28 ml-2"></i></a>
+                    <a href="#" class="socialLink"> <i class="fa fa-twitter socialTwitter fs-28 ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

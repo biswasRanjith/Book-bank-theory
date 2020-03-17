@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Book Bank| Register</title>
+    <link rel="icon" href="/images/logob.PNG">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Bootstrap cdn
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <!-- Hover.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <!-- External css -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <!-- ajaxcall -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+</head>
+
+<body>
+    <img src="/images/bookBg.jpg" alt="" class="bookBg">
+    <div class="container">
+        <div class="row" style="display:flex; justify-content:center;">
+            <div class="col-md-6 col-sm-9">
+                <div class="registerCard mt-40">
+                    <h1>Register</h1>
+                    <hr>
+                    <section name="f1">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputFirstName">FirstName</label>
+                                        <input type="text" class="form-control" id="FirstName" placeholder="Enter Firstname" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputLastName">LastName</label>
+                                        <input type="text" class="form-control" id="LastName" placeholder="Enter LastName" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputMobileNumber">Mobile Number</label>
+                                        <input type="tel" class="form-control" id="MobileNumber" placeholder="Enter Mobile Number" pattern="[0-9]+" title="Enter number only" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail">Email address</label>
+                                        <input type="email" class="form-control" id="EmailId" placeholder="Enter Email" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword">Password</label>
+                                        <input type="password" class="form-control" id="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter Password" required>
+                                        <small class="form-text text-muted">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputAddress">Address</label>
+                                        <textarea class="form-control" rows="4" id="Address" placeholder="Enter Address" required></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-maroon hvr-sweep-to-right" id="submit">Sign Up</button>
+
+                    </section>
+                    <div class="mt-20">
+                        Already have an account? <a href="/login"> Sign In here</a>
+                    </div>
+                    <!-- AJAX CALL START -->
+                    <script>
+                        console.log("ajax call");
+                        document.getElementById("submit").onclick = function(ev) {
+                            console.log("ooooook----");
+
+                            var temp = {
+                                "FirstName": document.getElementById("FirstName").value,
+                                "LastName": document.getElementById("LastName").value,
+                                "MobileNumber": document.getElementById("MobileNumber").value,
+                                "EmailId": document.getElementById("EmailId").value,
+                                "Password": document.getElementById("Password").value,
+                                "Address": document.getElementById("Address").value,
+                            }
+
+                            console.log(temp)
+
+                            var result = null;
+                            //     console.log(temp)
+                            $.ajax({
+                                "crossDomain": true,
+                                "url": "http://localhost:3000/api/register",
+                                "method": "POST",
+                                "timeout": 200,
+                                "data": JSON.stringify(temp),
+                                "async": false,
+                                "headers": {
+                                    "content-type": "application/json"
+                                },
+                                success: function(data) {
+                                    alert('1 data added');
+                                    console.log("data status" + data);
+                                    window.location = "http://localhost:3000/login"
+                                    result = data;
+
+                                },
+
+                                fail: function(data) {
+                                    console.log(data)
+                                    result = data;
+                                }
+                            });
+
+                            console.log(result);
+                        };
+                    </script>
+                    <!-- API CALL END-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+</body>
+
+</html>
